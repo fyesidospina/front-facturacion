@@ -1,0 +1,45 @@
+<div class="content-block dx-card responsive-paddings">
+  <h2 class="content-block">Crear Cliente</h2>
+  
+  <form class="create-account-form" (submit)="onSubmit($event)">
+    <dx-form [formData]="formData" [disabled]="loading">
+
+      <dxi-item dataField="Nombres" editorType="dxTextBox"
+        [editorOptions]="{ stylingMode: 'filled', placeholder: 'Nombre' }">
+        <dxi-validation-rule type="required" message="Nombre requerido"></dxi-validation-rule>
+        <dxo-label [visible]="false"></dxo-label>
+      </dxi-item>
+
+      <dxi-item dataField="Apellidos" editorType="dxTextBox"
+        [editorOptions]="{ stylingMode: 'filled', placeholder: 'Apellidos' }">
+        <dxi-validation-rule type="required" message="Apellido es requerido"></dxi-validation-rule>
+        <dxo-label [visible]="false"></dxo-label>
+      </dxi-item>
+
+
+      <dxi-item dataField="Edad" editorType="dxTextBox"
+        [editorOptions]="{ stylingMode: 'filled', placeholder: 'Edad' }">
+        <dxi-validation-rule type="required" message="Edad requerida"></dxi-validation-rule>
+        <dxo-label [visible]="false"></dxo-label>
+      </dxi-item>
+
+      <dxi-item itemType="button">
+        <dxo-button-options width="100%" type="default" [useSubmitBehavior]="true" [template]="'createAccountTemplate'">
+        </dxo-button-options>
+      </dxi-item>
+
+      <ng-container *dxTemplate="let item of 'createAccountTemplate'">
+        <div>
+          <span class="dx-button-text">
+            <ng-container *ngIf="loading; else notLoading">
+              <dx-load-indicator width="24px" height="24px" [visible]="true"></dx-load-indicator>
+            </ng-container>
+
+            <ng-template #notLoading>Crear Cliente</ng-template>
+          </span>
+        </div>
+      </ng-container>
+
+    </dx-form>
+  </form>
+</div>
