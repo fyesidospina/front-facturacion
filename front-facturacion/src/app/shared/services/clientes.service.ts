@@ -28,8 +28,7 @@ export class ClientesService {
 
   getClientes(){
     return new Promise<GetCliente>(resolve => {
-      this.http.get(`${ URL }/api/Cliente`).subscribe(resp => {      
-          console.log("servicesss", resp)          
+      this.http.get(`${ URL }/api/Cliente`).subscribe(resp => {                         
         resolve(resp)        
       });
     });
@@ -48,7 +47,7 @@ export class ClientesService {
   }
 
   async putCliente(id:number, obj: GetCliente){
-    
+    console.log("ENDPOINT: ", URL)
     return new Promise<GetCliente>(resolve => {
       const httpOptions = {
         headers: new HttpHeaders({'Content-Type': 'application/json'})

@@ -51,30 +51,41 @@ export class ClientesComponent implements OnInit {
   //Actualizar registro
   async onSaving(data: any) {
 
-
-    this.dataSource = await this.apiServices.getClienteById(data.changes[0].key.id);
-
-    console.log("inicio", this.dataSource)
+    this.dataSource = await this.apiServices.getClienteById(data.changes[0].key
+    );
 
     if (this.dataSource != null) {
+
       if (data.changes.length > 0) {
 
-        console.log("inicio", data.changes[0].data)
-        data.changes[0].data.id = data.changes[0].key
-  
-        const result = await this.apiServices.putCliente(data.changes[0].key, data.changes[0].data)
-  
-        this.dataSource = result
-        if (this.dataSource != null) {
-          this.getClientes();
-          notify('CLIENTE MODIFICADO CON EXITO', 'success', 3000);
-          console.log("ELIF", this.dataSource.result)
-          //this.router.navigate(['/clientes']);
+        if (data.changes[0].type === 'remove') {
+
+          const result = await this.apiServices.delCliente(data.changes[0].key)
+          this.dataSource = result
+          console.log("RESP-DELETE", this.dataSource.result)
+          if (this.dataSource != null) {
+            this.getClientes();
+            notify('CLIENTE ELIMINADO CON EXITO', 'success', 3000);            
+            //this.router.navigate(['/clientes']);
+          }
+        } else {
+          data.changes[0].data.id = data.changes[0].key
+
+          const result = await this.apiServices.putCliente(data.changes[0].key, data.changes[0].data)
+
+          this.dataSource = result
+          if (this.dataSource != null) {
+            this.getClientes();
+            notify('CLIENTE MODIFICADO CON EXITO', 'success', 3000);          
+            //this.router.navigate(['/clientes']);
+          }
         }
-      }  
+
+
+      }
     }
 
-    
+
   }
 
 
