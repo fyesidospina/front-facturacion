@@ -1,4 +1,4 @@
-<h2 class="content-block">Clientes</h2>
+<h2 class="content-block">Productos</h2>
 <div class="content-block">
 
     <div>
@@ -7,7 +7,7 @@
             <dx-form>
                 <dxi-item itemType="button">
                     <dxo-button-options width="100%" type="default" [useSubmitBehavior]="false"
-                        [template]="'CREAR CLIENTE'" [onClick]="onCreateUserClick">
+                        [template]="'CREAR PRODUCTO'" [onClick]="onCreateUserClick">
                     </dxo-button-options>
                 </dxi-item>
             </dx-form>
@@ -27,9 +27,8 @@
                 </dxi-column>
 
                 <!-- <dxi-column dataField="id" ReadOnly="true" [width]="500" [hidingPriority]="2" >{{dataSource}}</dxi-column> -->
-                <dxi-column dataField="nombres" [hidingPriority]="2">{{dataSource}}</dxi-column>
-                <dxi-column dataField="apellidos" [hidingPriority]="2">{{dataSource}}</dxi-column>
-                <dxi-column dataField="edad" [hidingPriority]="2">{{dataSource}}</dxi-column>
+                <dxi-column dataField="nombre_producto"  [hidingPriority]="2">{{dataSource}}</dxi-column>
+                <dxi-column dataField="detalle"  [hidingPriority]="2">{{dataSource}}</dxi-column>                
             </dx-data-grid>
         </div>
     </div>

@@ -7,4 +7,5 @@ export * from './change-password-form/change-password-form.component';
 export * from './side-navigation-menu/side-navigation-menu.component';
 export * from './user-panel/user-panel.component';
 export * from './create-client-form/create-client-form.component';
+export * from './create-product-form/create-product-form.component';
 

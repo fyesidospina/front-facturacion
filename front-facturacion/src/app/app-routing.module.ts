@@ -7,6 +7,9 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { TasksComponent } from './pages/tasks/tasks.component';
 import { ClientesComponent } from './pages/clientes/clientes.component';
 import { DxDataGridModule, DxFormModule } from 'devextreme-angular';
+import { ProductosComponent } from './pages/productos/productos.component';
+import { CreateProductFormComponent } from './shared/components/create-product-form/create-product-form.component';
+import { InventariosComponent } from './pages/inventarios/inventarios.component';
 
 const routes: Routes = [
   {
@@ -17,6 +20,16 @@ const routes: Routes = [
   {
     path: 'clientes',
     component: ClientesComponent,
+    canActivate: [ AuthGuardService ]
+  },
+  {
+    path: 'productos',
+    component: ProductosComponent,
+    canActivate: [ AuthGuardService ]
+  },
+  {
+    path: 'inventarios',
+    component: InventariosComponent,
     canActivate: [ AuthGuardService ]
   },
   {
@@ -60,6 +73,11 @@ const routes: Routes = [
     canActivate: [ AuthGuardService ]
   },
   {
+    path: 'create-product-form',
+    component: CreateProductFormComponent,
+    canActivate: [ AuthGuardService ]
+  },
+  {
     path: '**',
     redirectTo: 'home'
   }
@@ -73,7 +91,9 @@ const routes: Routes = [
     HomeComponent,
     ProfileComponent,
     TasksComponent,
-    ClientesComponent
+    ClientesComponent,
+    ProductosComponent,
+    InventariosComponent
   ]
 })
 export class AppRoutingModule { }

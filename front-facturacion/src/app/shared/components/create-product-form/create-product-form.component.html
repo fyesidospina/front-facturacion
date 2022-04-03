@@ -1,0 +1,38 @@
+<div class="content-block dx-card responsive-paddings">
+  <h2 class="content-block">Crear Producto</h2>
+  
+  <form class="create-account-form" (submit)="onSubmit($event)">
+    <dx-form [formData]="formData" [disabled]="loading">
+
+      <dxi-item dataField="nombre_producto" editorType="dxTextBox" [width]="400"
+        [editorOptions]="{ stylingMode: 'filled', placeholder: 'Nombre Producto' }">
+        <dxi-validation-rule type="required" message="Nombre requerido"></dxi-validation-rule>
+        <dxo-label [visible]="false"></dxo-label>
+      </dxi-item>
+
+      <dxi-item dataField="Detalle" editorType="dxTextBox"
+        [editorOptions]="{ stylingMode: 'filled', placeholder: 'Detalle' }">
+        <dxi-validation-rule type="required" message="Detalle es requerido"></dxi-validation-rule>
+        <dxo-label [visible]="false"></dxo-label>
+      </dxi-item>
+
+      <dxi-item itemType="button">
+        <dxo-button-options width="100%" type="default" [useSubmitBehavior]="true" [template]="'createProductTemplate'">
+        </dxo-button-options>
+      </dxi-item>
+
+      <ng-container *dxTemplate="let item of 'createProductTemplate'">
+        <div>
+          <span class="dx-button-text">
+            <ng-container *ngIf="loading; else notLoading">
+              <dx-load-indicator width="24px" height="24px" [visible]="true"></dx-load-indicator>
+            </ng-container>
+
+            <ng-template #notLoading>Crear Producto</ng-template>
+          </span>
+        </div>
+      </ng-container>
+
+    </dx-form>
+  </form>
+</div>

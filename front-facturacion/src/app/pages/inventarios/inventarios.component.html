@@ -1,4 +1,4 @@
-<h2 class="content-block">Clientes</h2>
+<h2 class="content-block">Inventarios</h2>
 <div class="content-block">
 
     <div>
@@ -7,7 +7,7 @@
             <dx-form>
                 <dxi-item itemType="button">
                     <dxo-button-options width="100%" type="default" [useSubmitBehavior]="false"
-                        [template]="'CREAR CLIENTE'" [onClick]="onCreateUserClick">
+                        [template]="'INGRESAR INVENTARIO'" [onClick]="onCreateUserClick">
                     </dxo-button-options>
                 </dxi-item>
             </dx-form>
@@ -21,15 +21,20 @@
                 <dxo-paging [enabled]="false"></dxo-paging>
                 <dxo-editing mode="row" [allowUpdating]="true" [allowDeleting]="true" [useIcons]="true" ></dxo-editing>
                 <dxo-filter-row [visible]="true"></dxo-filter-row>
-                <dxi-column type="buttons">
+                <dxi-column type="buttons" >
                     <dxi-button name="edit"></dxi-button>
                     <dxi-button name="delete"></dxi-button>
                 </dxi-column>
 
                 <!-- <dxi-column dataField="id" ReadOnly="true" [width]="500" [hidingPriority]="2" >{{dataSource}}</dxi-column> -->
-                <dxi-column dataField="nombres" [hidingPriority]="2">{{dataSource}}</dxi-column>
-                <dxi-column dataField="apellidos" [hidingPriority]="2">{{dataSource}}</dxi-column>
-                <dxi-column dataField="edad" [hidingPriority]="2">{{dataSource}}</dxi-column>
+                <dxi-column dataField="id_producto" caption="Producto" [width]="125">
+                    <dxo-lookup [dataSource]="listaProductos" displayExpr="nombre_producto" valueExpr="id">
+                    </dxo-lookup>
+                  </dxi-column>
+                <dxi-column dataField="cantidad"  [hidingPriority]="2">{{dataSource}}</dxi-column>
+                <dxi-column dataField="valor_und"  [hidingPriority]="2"></dxi-column>
+                <dxi-column dataField="existencia"  [hidingPriority]="2">{{dataSource}}</dxi-column>                
+
             </dx-data-grid>
         </div>
     </div>
