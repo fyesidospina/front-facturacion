@@ -1,28 +1,28 @@
 <div class="content-block dx-card responsive-paddings">
-  <h2 class="content-block">Ingresar Inventario</h2>
+  <h2 class="content-block">Registrar Venta</h2>
 
   <form class="create-inventario-form" (submit)="onFormSubmit($event)">
     <dx-form [formData]="formData" [disabled]="loading">
 
-      <dxi-item dataField="id_producto" editorType="dxSelectBox" [editorOptions]="{ dataSource: listdataProd2}" displayExpr="nombre" valueExpr="id">
-        <dxi-validation-rule type="required" message="Is required">
-        </dxi-validation-rule>
-        <dxo-label [visible]="false"></dxo-label>
-      </dxi-item>
+      
+        <dxi-item dataField="id_inventario" editorType="dxSelectBox" [editorOptions]="{ dataSource: listaInvent2}" valueExpr="id_inventario">
+          <dxi-validation-rule type="required" message="Is required">
+          </dxi-validation-rule>
+          <dxo-label [visible]="false"></dxo-label>
+        </dxi-item>
+
+        <dxi-item dataField="id_cliente" editorType="dxSelectBox" [editorOptions]="{ dataSource: listaCli2}" valueExpr="id_cliente">
+          <dxi-validation-rule type="required" message="Is required">
+          </dxi-validation-rule>
+          <dxo-label [visible]="false"></dxo-label>
+        </dxi-item>
 
       <dxi-item dataField="cantidad" editorType="dxTextBox" type="number"
         [editorOptions]="{ stylingMode: 'filled', placeholder: 'Cantidad' }">
         <dxi-validation-rule type="required" message="Nombre requerido"></dxi-validation-rule>
         <dxo-label [visible]="false"></dxo-label>
       </dxi-item>
-      <!-- <dxi-item dataField="cantidad" >
-        <dx-number-box id="cantidad"
-        [value]="15"
-        [min]="10"
-        [max]="20"
-        [showSpinButtons]="true"
-      ></dx-number-box>
-      </dxi-item> -->
+      
 
 
       <dxi-item dataField="valor_und" editorType="dxTextBox"
@@ -35,6 +35,11 @@
       <dxi-item dataField="existencia" editorType="dxTextBox"
         [editorOptions]="{ stylingMode: 'filled', placeholder: 'Existencias' }">
         <dxi-validation-rule type="required" message="Edad requerida"></dxi-validation-rule>
+        <dxo-label [visible]="false"></dxo-label>
+      </dxi-item>
+
+      <dxi-item dataField="descripcion" editorType="dxTextBox"
+        [editorOptions]="{ stylingMode: 'filled', placeholder: 'Descripcion' }">
         <dxo-label [visible]="false"></dxo-label>
       </dxi-item>
 

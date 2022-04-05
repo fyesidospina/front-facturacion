@@ -11,6 +11,8 @@ import { ProductosComponent } from './pages/productos/productos.component';
 import { CreateProductFormComponent } from './shared/components/create-product-form/create-product-form.component';
 import { InventariosComponent } from './pages/inventarios/inventarios.component';
 import { CreateInventarioFormComponent } from './shared/components/create-inventario-form/create-inventario-form.component';
+import { FacturacionComponent } from './pages/facturacion/facturacion.component';
+import { CreateFacturacionFormComponent } from './shared/components/create-facturacion-form/create-facturacion-form.component';
 
 const routes: Routes = [
   {
@@ -31,6 +33,11 @@ const routes: Routes = [
   {
     path: 'inventarios',
     component: InventariosComponent,
+    canActivate: [ AuthGuardService ]
+  },
+  {
+    path: 'facturacion',
+    component: FacturacionComponent,
     canActivate: [ AuthGuardService ]
   },
   {
@@ -84,6 +91,11 @@ const routes: Routes = [
     canActivate: [ AuthGuardService ]
   },
   {
+    path: 'create-facturacion-form',
+    component: CreateFacturacionFormComponent,
+    canActivate: [ AuthGuardService ]
+  },
+  {
     path: '**',
     redirectTo: 'home'
   }
@@ -99,7 +111,8 @@ const routes: Routes = [
     TasksComponent,
     ClientesComponent,
     ProductosComponent,
-    InventariosComponent
+    InventariosComponent,
+    FacturacionComponent
   ]
 })
 export class AppRoutingModule { }

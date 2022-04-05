@@ -1,0 +1,36 @@
+<h2 class="content-block">Facturacion</h2>
+<div class="content-block">
+
+    <div>
+
+        <form>
+            <dx-form>
+                <dxi-item itemType="button">
+                    <dxo-button-options width="100%" type="default" [useSubmitBehavior]="false"
+                        [template]="'INGRESAR FACTURACION'" [onClick]="onCreateFacturacionClick">
+                    </dxo-button-options>
+                </dxi-item>
+            </dx-form>
+        </form>
+
+        <div class="dx-card responsive-paddings">
+            <dx-data-grid id="gridContainer" [dataSource]="listaFacturacion" [showBorders]="true" keyExpr="id"
+                [repaintChangesOnly]="true" (onSaving)="onSaving($event)">
+
+                <dxo-paging [enabled]="false"></dxo-paging>
+                <dxo-editing mode="row" [allowUpdating]="true" [allowDeleting]="true" [useIcons]="true"></dxo-editing>
+                <dxo-filter-row [visible]="true"></dxo-filter-row>
+                <dxi-column type="buttons">
+                    <dxi-button name="edit"></dxi-button>
+                    <dxi-button name="delete"></dxi-button>
+                </dxi-column>
+               
+                <dxi-column dataField="fecha_compra" [hidingPriority]="2">{{listaFacturacion}}</dxi-column>
+                <dxi-column dataField="id_inventario" [hidingPriority]="2">{{listaFacturacion}}</dxi-column>
+                <dxi-column dataField="id_cliente" [hidingPriority]="2">{{listaFacturacion}}</dxi-column>
+                <dxi-column dataField="cantidad" [hidingPriority]="2">{{listaFacturacion}}</dxi-column>
+                <dxi-column dataField="descripcion" [hidingPriority]="2">{{listaFacturacion}}</dxi-column>
+
+            </dx-data-grid>
+        </div>
+    </div>
