@@ -1,58 +1,91 @@
-<h2 class="content-block">Home</h2>
+<h2 class="content-block">Bienvenidos Sistema de Facturacion</h2>
 <div class="content-block">
+
   <div class="dx-card responsive-paddings">
-    
-    <!-- <dx-chart   id="chart" [dataSource]="dataSource" title="Pizza Shop Complaints" palette="Harmony Light" >
-    <dxi-value-axis name="frequency" position="left" [tickInterval]="300">
-  </dxi-value-axis>
-  <dxi-value-axis
-    name="percentage"
-    position="right"
-    [showZero]="true"
-    [tickInterval]="20"
-    [valueMarginsEnabled]="false"
-  >
-    <dxo-label [customizeText]="customizeLabelText"></dxo-label>
-    <dxi-constant-line
-      [value]="80"
-      color="#fc3535"
-      dashStyle="dash"
-      [width]="2"
-    >
-      <dxo-label [visible]="false"></dxo-label>
-    </dxi-constant-line>
-  </dxi-value-axis>
-  <dxo-argument-axis>
-    <dxo-label overlappingBehavior="stagger"></dxo-label>
-  </dxo-argument-axis>
-  <dxo-tooltip
-    [enabled]="true"
-    [shared]="true"
-    [customizeTooltip]="customizeTooltip"
-  >
-  </dxo-tooltip>
-  <dxo-common-series-settings argumentField="complaint">
-  </dxo-common-series-settings>
-  <dxi-series
-    type="bar"
-    valueField="count"
-    axis="frequency"
-    name="Complaint frequency"
-    color="#fac29a"
-  >
-  </dxi-series>
-  <dxi-series
-    type="spline"
-    valueField="cumulativePercent"
-    axis="percentage"
-    name="Cumulative percentage"
-    color="#6b71c3"
-  >
-  </dxi-series>
-  <dxo-legend verticalAlignment="top" horizontalAlignment="center">
-  </dxo-legend>
-</dx-chart> -->
+
+    <div class="dx-card responsive-paddings">
+      <h2 class="content-block">Lista Ventas Por Producto Por Año</h2>
+      <dx-data-grid id="gridContainer" [dataSource]="getViewVentaPorProductoAno" [showBorders]="true" keyExpr="id"
+        [repaintChangesOnly]="true">
+
+        <dxo-paging [enabled]="false"></dxo-paging>
+        <dxo-editing mode="row" [allowUpdating]="true" [allowDeleting]="true" [useIcons]="true"></dxo-editing>
+        <dxo-filter-row [visible]="true"></dxo-filter-row>
+
+        <dxi-column dataField="nombre_producto" [hidingPriority]="2">{{getViewPromedioCompra}}</dxi-column>
+        <dxi-column dataField="cant_Vendido" [hidingPriority]="2">{{getViewPromedioCompra}}</dxi-column>
+        <dxi-column dataField="valor_und" [hidingPriority]="2">{{getViewPromedioCompra}}</dxi-column>
+        <dxi-column dataField="total_venta" [hidingPriority]="2">{{getViewPromedioCompra}}</dxi-column>
+        <dxi-column dataField="fecha_compra" [hidingPriority]="2">{{getViewPromedioCompra}}</dxi-column>
+      </dx-data-grid>
+    </div>
+  </div>
+
+
+  <div class="dx-card responsive-paddings">
+
+    <div class="dx-card responsive-paddings">
+      <h2 class="content-block">Lista Productos</h2>
+      <dx-data-grid id="gridContainer" [dataSource]="listaDatasource" [showBorders]="true" keyExpr="id"
+        [repaintChangesOnly]="true">
+
+        <dxo-paging [enabled]="false"></dxo-paging>
+        <dxo-editing mode="row" [allowUpdating]="true" [allowDeleting]="true" [useIcons]="true"></dxo-editing>
+        <dxo-filter-row [visible]="true"></dxo-filter-row>
+
+        <!-- <dxi-column dataField="id" ReadOnly="true" [width]="500" [hidingPriority]="2" >{{dataSource}}</dxi-column> -->
+        <dxi-column dataField="id" [hidingPriority]="2">{{listaDatasource}}</dxi-column>
+        <dxi-column dataField="nombre_producto" [hidingPriority]="2">{{listaDatasource}}</dxi-column>
+        <dxi-column dataField="valor_und" [hidingPriority]="2">{{listaDatasource}}</dxi-column>
+      </dx-data-grid>
+    </div>
 
 
   </div>
+
+  <div class="dx-card responsive-paddings">
+
+    <div class="dx-card responsive-paddings">
+      <h2 class="content-block">Lista Clientes No Mayores 35 Años</h2>
+      <dx-data-grid id="gridContainer" [dataSource]="getViewClienteNoMayor" [showBorders]="true" keyExpr="id"
+        [repaintChangesOnly]="true">
+
+        <dxo-paging [enabled]="false"></dxo-paging>
+        <dxo-editing mode="row" [allowUpdating]="true" [allowDeleting]="true" [useIcons]="true"></dxo-editing>
+        <dxo-filter-row [visible]="true"></dxo-filter-row>
+
+        <!-- <dxi-column dataField="id" ReadOnly="true" [width]="500" [hidingPriority]="2" >{{dataSource}}</dxi-column> -->
+        <dxi-column dataField="nombres" [hidingPriority]="2">{{listaDatasource}}</dxi-column>
+        <dxi-column dataField="apellidos" [hidingPriority]="2">{{listaDatasource}}</dxi-column>
+        <dxi-column dataField="edad" [hidingPriority]="2">{{listaDatasource}}</dxi-column>
+        <dxi-column dataField="fecha_compra" [hidingPriority]="2">{{listaDatasource}}</dxi-column>
+      </dx-data-grid>
+    </div>
+
+
+  </div>
+
+  <div class="dx-card responsive-paddings">
+
+    <div class="dx-card responsive-paddings">
+      <h2 class="content-block">Lista Promedio Compra Por Cliente</h2>
+      <dx-data-grid id="gridContainer" [dataSource]="getViewPromedioCompra" [showBorders]="true" keyExpr="id"
+        [repaintChangesOnly]="true">
+
+        <dxo-paging [enabled]="false"></dxo-paging>
+        <dxo-editing mode="row" [allowUpdating]="true" [allowDeleting]="true" [useIcons]="true"></dxo-editing>
+        <dxo-filter-row [visible]="true"></dxo-filter-row>
+
+        <dxi-column dataField="nombres" [hidingPriority]="2">{{getViewPromedioCompra}}</dxi-column>
+        <dxi-column dataField="apellidos" [hidingPriority]="2">{{getViewPromedioCompra}}</dxi-column>
+        <dxi-column dataField="media_dias" [hidingPriority]="2">{{getViewPromedioCompra}}</dxi-column>
+        <dxi-column dataField="fecha_proxima_compra" [hidingPriority]="2">{{getViewPromedioCompra}}</dxi-column>
+      </dx-data-grid>
+    </div>
+  </div>
+
+  
+
+
+
 </div>

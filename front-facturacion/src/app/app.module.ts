@@ -9,7 +9,7 @@ import { UnauthenticatedContentModule } from './unauthenticated-content';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { DxFormModule } from 'devextreme-angular/ui/form';
-import { DxButtonModule, DxDropDownButtonModule, DxSelectBoxModule } from 'devextreme-angular';
+import { DxButtonModule, DxChartModule, DxDropDownButtonModule, DxSelectBoxModule } from 'devextreme-angular';
 
 
 
@@ -34,7 +34,8 @@ import { DxButtonModule, DxDropDownButtonModule, DxSelectBoxModule } from 'devex
     DxButtonModule,
     CreateClientFormModule,
     DxDropDownButtonModule,
-    DxSelectBoxModule
+    DxSelectBoxModule,
+    DxChartModule
     
   ],
   providers: [
