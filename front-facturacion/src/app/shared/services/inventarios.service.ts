@@ -1,7 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { GetInventario, RespuestaPosts } from '../../models/inventario';
 import DataSource from 'devextreme/data/data_source';
 
 const URL = environment.url;
@@ -16,28 +15,28 @@ export class InventarioService {
   constructor(private http: HttpClient) { }
 
   getInventario(){
-    return new Promise<GetInventario>(resolve => {
+    return new Promise<any>(resolve => {
       this.http.get(`${ URL }/api/Inventario`).subscribe(resp => {                         
         resolve(resp)        
       });
     });
   }
 
-  async postInventario(obj: GetInventario){
+  async postInventario(obj: any){
     
-    return new Promise<GetInventario>(resolve => {
+    return new Promise<any>(resolve => {
       const httpOptions = {
         headers: new HttpHeaders({'Content-Type': 'application/json'})
-      }
+      }    
       this.http.post(`${ URL }/api/Inventario`, obj, httpOptions).subscribe(resp => {                          
         resolve(resp)        
       });
     });
   }
 
-  async putInventario(id:number, obj: GetInventario){
+  async putInventario(id:number, obj: any){
     console.log("ENDPOINT: ", URL)
-    return new Promise<GetInventario>(resolve => {
+    return new Promise<any>(resolve => {
       const httpOptions = {
         headers: new HttpHeaders({'Content-Type': 'application/json'})
       }
@@ -49,7 +48,7 @@ export class InventarioService {
 
   async delInventario(id:number){
     
-    return new Promise<GetInventario>(resolve => {
+    return new Promise<any>(resolve => {
       const httpOptions = {
         headers: new HttpHeaders({'Content-Type': 'application/json'})
       }
@@ -61,7 +60,7 @@ export class InventarioService {
 
   async getInventarioById(id:number){
     
-    return new Promise<GetInventario>(resolve => {
+    return new Promise<any>(resolve => {
       const httpOptions = {
         headers: new HttpHeaders({'Content-Type': 'application/json'})
       }

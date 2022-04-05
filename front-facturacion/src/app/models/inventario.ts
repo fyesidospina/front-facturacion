@@ -5,7 +5,11 @@ export interface RespuestaPosts {
   }
 
   export interface GetInventario {
-    _id?: number;    
+    id?: number; 
+    id_producto:number;
+    cantidad:number;
+    valor_und: number;
+    existencia: number; 
   }
 
   export interface GetInventarioList {

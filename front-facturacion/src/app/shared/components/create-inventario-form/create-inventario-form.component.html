@@ -1,0 +1,217 @@
+<div class="content-block dx-card responsive-paddings">
+  <h2 class="content-block">Crear Cliente</h2>
+
+  <form class="create-inventario-form" (submit)="onFormSubmit($event)">
+    <dx-form [formData]="formData" [disabled]="loading">
+
+      <dxi-item dataField="id_producto" editorType="dxSelectBox" [editorOptions]="{ dataSource: listdataProd2}" displayExpr="nombre" valueExpr="id">
+        <dxi-validation-rule type="required" message="Is required">
+        </dxi-validation-rule>
+        <dxo-label [visible]="false"></dxo-label>
+      </dxi-item>
+
+      <dxi-item dataField="cantidad" editorType="dxTextBox" type="number"
+        [editorOptions]="{ stylingMode: 'filled', placeholder: 'Cantidad' }">
+        <dxi-validation-rule type="required" message="Nombre requerido"></dxi-validation-rule>
+        <dxo-label [visible]="false"></dxo-label>
+      </dxi-item>
+      <!-- <dxi-item dataField="cantidad" >
+        <dx-number-box id="cantidad"
+        [value]="15"
+        [min]="10"
+        [max]="20"
+        [showSpinButtons]="true"
+      ></dx-number-box>
+      </dxi-item> -->
+
+
+      <dxi-item dataField="valor_und" editorType="dxTextBox"
+        [editorOptions]="{ stylingMode: 'filled', placeholder: 'Valor Unidad' }">
+        <dxi-validation-rule type="required" message="Apellido es requerido"></dxi-validation-rule>
+        <dxo-label [visible]="false"></dxo-label>
+      </dxi-item>
+
+
+      <dxi-item dataField="existencia" editorType="dxTextBox"
+        [editorOptions]="{ stylingMode: 'filled', placeholder: 'Existencias' }">
+        <dxi-validation-rule type="required" message="Edad requerida"></dxi-validation-rule>
+        <dxo-label [visible]="false"></dxo-label>
+      </dxi-item>
+
+      <dxi-item itemType="button">
+        <dxo-button-options width="100%" type="default" [useSubmitBehavior]="true" [template]="'createAccountTemplate'">
+        </dxo-button-options>
+      </dxi-item>
+
+      <ng-container *dxTemplate="let item of 'createAccountTemplate'">
+        <div>
+          <span class="dx-button-text">
+            <ng-container *ngIf="loading; else notLoading">
+              <dx-load-indicator width="24px" height="24px" [visible]="true"></dx-load-indicator>
+            </ng-container>
+
+            <ng-template #notLoading>Crear Cliente</ng-template>
+          </span>
+        </div>
+      </ng-container>
+
+    </dx-form>
+  </form>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<!-- <form action="your-action" (submit)="onFormSubmit($event)">
+  <dx-form id="form" [formData]="formData" [readOnly]="false" [showColonAfterLabel]="true"
+    [showValidationSummary]="true" validationGroup="customerData">
+    <dxi-item itemType="group" caption="Credentials">
+      <dxi-item dataField="cantidad">
+        <dxi-validation-rule type="required" message="required">
+        </dxi-validation-rule>
+      </dxi-item>
+      <dxi-item dataField="valor_und">
+        <dxi-validation-rule type="required" message="required">
+        </dxi-validation-rule>
+      </dxi-item>
+
+      <dxi-item dataField="existencias">
+        <dxi-validation-rule type="required" message="Name is required">
+        </dxi-validation-rule>
+      </dxi-item>
+
+      <dxi-item dataField="id_producto" editorType="dxSelectBox" [editorOptions]="{ dataSource: listdataProd2}" displayExpr="nombre" valueExpr="id">
+        <dxi-validation-rule type="required" message="Is required">
+        </dxi-validation-rule>
+      </dxi-item>
+
+
+
+
+    </dxi-item>
+
+
+    <dxi-item itemType="button" horizontalAlignment="left" [buttonOptions]="buttonOptions">
+    </dxi-item>
+  </dx-form>
+</form> -->
+
+
+
+
+
+
+
+
+<!-- <div class="content-block dx-card responsive-paddings">
+  <h2 class="content-block">Crear Inventario</h2>
+
+  <form class="create-inventario-form" (submit)="onSubmit($event)">
+    <dx-form [formData]="formData" [disabled]="loading">
+
+      <dxi-item dataField="Nombres" editorType="dxTextBox"
+        [editorOptions]="{ stylingMode: 'filled', placeholder: 'Nombre' }">
+        <dxi-validation-rule type="required" message="Nombre requerido"></dxi-validation-rule>
+        <dxo-label [visible]="false"></dxo-label>
+      </dxi-item>
+
+      <dxi-item dataField="Apellidos" editorType="dxTextBox"
+        [editorOptions]="{ stylingMode: 'filled', placeholder: 'Apellidos' }">
+        <dxi-validation-rule type="required" message="Apellido es requerido"></dxi-validation-rule>
+        <dxo-label [visible]="false"></dxo-label>
+      </dxi-item>
+
+
+      <dxi-item dataField="algo" editorType="dxTextBox"
+        [editorOptions]="{ stylingMode: 'filled', placeholder: 'Edad' }">
+        <dxi-validation-rule type="required" message="Edad requerida"></dxi-validation-rule>
+        <dxo-label [visible]="false"></dxo-label>
+      </dxi-item>
+
+      <dxi-item editorType="dx-select-box">
+        <dx-select-box displayExpr="nombre" [(dataSource)]="data" [value]="data[0]"
+          [selectedItem]="data[0]" (onValueChanged)="onSelectProd($event)" ></dx-select-box>
+      </dxi-item>
+
+      <dxi-item>
+        <dx-text-box  id="id_prod"  [value]="data"></dx-text-box>
+        <dxo-label [visible]="false"></dxo-label>
+      </dxi-item>
+
+      <dxi-item dataField="cinco" editorType="dxTextBox" [text]="data[0]">
+        <dxo-label [visible]="false"></dxo-label>
+      </dxi-item>
+
+
+      <dxi-item itemType="button">
+        <dxo-button-options width="100%" type="default" [useSubmitBehavior]="true"
+          [template]="'createInventarioTemplate'">
+        </dxo-button-options>
+      </dxi-item>
+
+      <ng-container *dxTemplate="let item of 'createInventarioTemplate'">
+        <div>
+          <span class="dx-button-text">
+            <ng-container *ngIf="loading; else notLoading">
+              <dx-load-indicator width="24px" height="24px" [visible]="true"></dx-load-indicator>
+            </ng-container>
+
+            <ng-template #notLoading>Crear Inventario</ng-template>
+          </span>
+        </div>
+      </ng-container>
+
+    </dx-form>
+  </form>
+</div> -->
+
+
+
+
+
+<!--
+<div class="long-title">
+  <h3>Personal details</h3>
+</div>
+<div id="form-container">
+  <dx-form id="form" [colCount]="0" [formData]="listaProductos">
+
+    <dxi-item itemType="group">
+
+      <dxi-item itemType="group" caption="Personal Data">
+        <dxi-item dataField="FirstName"></dxi-item>
+        <dxi-item dataField="LastName"></dxi-item>
+        <dxi-item editorType="dx-select-box">
+          <dx-select-box displayExpr="nombre" [(dataSource)]="data" valueExpr="id"></dx-select-box>
+        </dxi-item>
+      </dxi-item>
+
+      <dxi-item itemType="button" caption="Personal Data">
+        <dxo-button-options width="100%" type="default" [template]="'createInventarioTemplate'"
+          onClick="onSelectProd()">
+        </dxo-button-options>
+      </dxi-item>
+
+    </dxi-item>
+
+    <ng-container *dxTemplate="let item of 'createInventarioTemplate'">
+      <div>
+        <span class="dx-button-text">
+          <ng-container *ngIf="loading; else notLoading">
+            <dx-load-indicator width="24px" height="24px" [visible]="true"></dx-load-indicator>
+          </ng-container>
+
+          <ng-template #notLoading>Crear Inventario</ng-template>
+        </span>
+      </div>
+    </ng-container>
+
+  </dx-form>
+</div> -->

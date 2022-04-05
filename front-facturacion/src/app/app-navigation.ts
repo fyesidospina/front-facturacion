@@ -30,15 +30,15 @@ export const navigation = [
           {
             text: 'Clientes',
             path: '/clientes'
-          },
-          {
-            text: 'Template',
-            path: '/tasks'
-          },
-          {
-            text: 'Template2',
-            path: '/profile'
-          }
+           },
+          // {
+          //   text: 'Template',
+          //   path: '/tasks'
+          // },
+          // {
+          //   text: 'Template2',
+          //   path: '/profile'
+          // }
         ]   
    }
   // {

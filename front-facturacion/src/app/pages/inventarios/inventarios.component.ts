@@ -4,8 +4,10 @@ import { InventarioService } from '../../shared/services/inventarios.service';
 import { ProductoService } from '../../shared/services/productos.service';
 import { GetInventario } from '../../models/inventario';
 import { GetProducto } from '../../models/producto';
-import { DxDataGridComponent, DxButtonModule, DxButtonComponent, DxDropDownBoxModule,
-  DxTreeViewModule } from "devextreme-angular";
+import {
+  DxDataGridComponent, DxButtonModule, DxButtonComponent, DxDropDownBoxModule,
+  DxTreeViewModule
+} from "devextreme-angular";
 
 import notify from 'devextreme/ui/notify';
 
@@ -21,15 +23,11 @@ export class InventariosComponent implements OnInit {
   dataSource: any;
   listaProductos: GetProducto[] = [];
 
-
-
-
   constructor(private apiServices: InventarioService, private router: Router, private productServices: ProductoService) {
 
   }
 
-  ngOnInit(): void {
-
+  ngOnInit(): void {    
     this.getInventarios()
   }
 
@@ -37,18 +35,16 @@ export class InventariosComponent implements OnInit {
 
     <any>this.productServices.getProductos().then((resp) => {
       this.objData = resp;
-      this.listaProductos = this.objData.result
-      console.log("this.listaProductos", this.listaProductos)
+      this.listaProductos = this.objData.result      
     }
     );
 
-      <GetInventario>this.apiServices.getInventario().then((resp) => {
+    <any>this.apiServices.getInventario().then((resp) => {
       this.objData = resp;
-      console.log("INVENTARIO DATA",this.objData)
-      this.interface = this.objData.result
-      this.dataSource = this.interface
+      this.dataSource = this.objData.result
     }
-    );
+    );    
+
   }
 
   onCreateUserClick = () => {
@@ -68,10 +64,10 @@ export class InventariosComponent implements OnInit {
 
           const result = await this.apiServices.delInventario(data.changes[0].key)
           this.dataSource = result
-          
+
           if (this.dataSource != null) {
             this.getInventarios();
-            notify('REGISTRO ELIMINADO CON EXITO', 'success', 3000);            
+            notify('REGISTRO ELIMINADO CON EXITO', 'success', 3000);
             //this.router.navigate(['/clientes']);
           }
         } else {
@@ -82,7 +78,7 @@ export class InventariosComponent implements OnInit {
           this.dataSource = result
           if (this.dataSource != null) {
             this.getInventarios();
-            notify('PRODUCTO MODIFICADO CON EXITO', 'success', 3000);          
+            notify('PRODUCTO MODIFICADO CON EXITO', 'success', 3000);
             //this.router.navigate(['/clientes']);
           }
         }

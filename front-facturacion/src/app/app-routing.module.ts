@@ -10,6 +10,7 @@ import { DxDataGridModule, DxFormModule } from 'devextreme-angular';
 import { ProductosComponent } from './pages/productos/productos.component';
 import { CreateProductFormComponent } from './shared/components/create-product-form/create-product-form.component';
 import { InventariosComponent } from './pages/inventarios/inventarios.component';
+import { CreateInventarioFormComponent } from './shared/components/create-inventario-form/create-inventario-form.component';
 
 const routes: Routes = [
   {
@@ -75,6 +76,11 @@ const routes: Routes = [
   {
     path: 'create-product-form',
     component: CreateProductFormComponent,
+    canActivate: [ AuthGuardService ]
+  },
+  {
+    path: 'create-inventario-form',
+    component: CreateInventarioFormComponent,
     canActivate: [ AuthGuardService ]
   },
   {
